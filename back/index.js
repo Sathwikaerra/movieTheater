@@ -9,11 +9,12 @@ import cors from 'cors'
 import path from 'path'
 import ticketRouter from './routes/ticketRouter.js';
 
-import {fileURLToPath} from 'url'
+// import {fileURLToPath} from 'url'
 
-const __filename=fileURLToPath(import.meta.url)
-const __dirname=path.dirname(__filename);
-console.log(__dirname)
+// const __filename=fileURLToPath(import.meta.url)
+// const __dirname=path.dirname(__filename);
+// console.log(__dirname)
+const __dirname=path.resolve();
 
 
 
@@ -31,9 +32,14 @@ app.use('/admin',adminRouter)
 app.use('/movie',movieRouter)
 app.use('/booking',bookingRouter)
 app.use('/ticket',ticketRouter)
-app.use(express.static(path.join(__dirname, '../front/build')));
+app.use(express.static(path.join(__dirname,'/front/build')));
 
-app.get('*',(req,res)=>res.sendFile(path.join(__dirname, '../front/build/index.html')))
+app.get('*',(req,res)=>{
+
+    res.sendFile(path.join(__dirname,'front','build','index.html'));
+
+})
+
 
 app.use('/api/hello',(req,res,next)=>{
 res.send("hiii")
@@ -42,14 +48,20 @@ res.send("hiii")
 
 
 
-
-  
-mongoose.connect(process.env.MONGO_URL).then(()=>{
-    app.listen(5000,()=>{
-        console.log(" db running 5000")
+try {
+    mongoose.connect(process.env.MONGO_URL).then(()=>{
+        app.listen(5000,()=>{
+            console.log(" db running 5000")
+        })
+    }).catch((error)=>{
+        console.log(error)
     })
-}).catch((error)=>{
-    console.log(error)
-})
+    
+} catch (error) {
+    console.log('error in connecting')
+    
+}
+  
+
 
 

@@ -281,7 +281,7 @@ export const sendAdminAuthRequest=async(data,signup)=>{
         seatnumber:seats,
         email:email,
         date:bdate,
-    }).catch((err)=>console.log("error in axios"))
+    }).catch((err)=>console.log("error in axios ..."))
 
     if(res.status!==200)
         {
