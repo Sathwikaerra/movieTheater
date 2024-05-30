@@ -16,8 +16,11 @@ const AuthForm = ({onsubmit,isAdmin}) => {
         setInputs((prevState)=>({...prevState,[e.target.name]:e.target.value}))
     }
 
+    const [loading,setLoading]=useState(false);
+
     const handleSubmit=(e)=>{
         e.preventDefault();
+        setLoading(true);
         onsubmit({inputs,signup: isAdmin?false:isSignup})
         
 
@@ -50,6 +53,7 @@ const AuthForm = ({onsubmit,isAdmin}) => {
     </div>
      
      <button className= 'mt-2 rounded-md w-full bg-green-500 p-2 mb-[10px] text-black font-semibold'>{isSignup?"Signup":"Login"}</button>
+     <p className='text-white font-serif'>{loading?"verifying...":""}</p>
 </form>
 
 {
