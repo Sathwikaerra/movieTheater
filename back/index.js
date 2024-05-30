@@ -9,6 +9,12 @@ import cors from 'cors'
 import path from 'path'
 import ticketRouter from './routes/ticketRouter.js';
 
+import {fileURLToPath} from 'url'
+
+const __filename=fileURLToPath(import.meta.url)
+const __dirname=path.dirname(__filename);
+console.log(__dirname)
+
 
 
 dotenv.config()
@@ -25,7 +31,9 @@ app.use('/admin',adminRouter)
 app.use('/movie',movieRouter)
 app.use('/booking',bookingRouter)
 app.use('/ticket',ticketRouter)
-// app.use(express.static(path.join(__dirname, 'front/build')));
+app.use(express.static(path.join(__dirname, '../front/build')));
+
+app.get('*',(req,res)=>res.sendFile(path.join(__dirname, '../front/build/index.html')))
 
 app.use('/api/hello',(req,res,next)=>{
 res.send("hiii")
