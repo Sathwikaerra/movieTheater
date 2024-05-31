@@ -24,7 +24,7 @@ const Homepage = () => {
     </div>
 
     <div className='flex justify-center items-center gap-11 flex-col'>
-      <h1 className=' font-bold text-[20px] sm:text-[35px] '>______________Latest Movies______________</h1>
+      <h1 className=' font-bold text-[20px] sm:text-[35px] '>Latest movies</h1>
       <div className='grid grid-cols-3 sm:flex sm:gap-4 sm:justify-center  sm:items-center sm:flex-wrap'>
 
       {
