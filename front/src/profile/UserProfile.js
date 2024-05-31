@@ -74,7 +74,7 @@ const UserProfile = () => {
       <div className='flex flex-col justify-center items-center'>
         <div>
         
-          <h1 className=' mb-[20px] font-bold text-xl text-center text-black shadow-neutral-50 shadow-2xl '>{  bookings.length>0 ?"_______Bookings_______":"_______No Bookings yet_______"}</h1>
+          <h1 className=' mb-[20px] font-bold text-xl text-center text-black shadow-neutral-50 shadow-2xl '>{ bookings && bookings ?"Bookings":"No Bookings yet"}</h1>
          
           
           <div>
