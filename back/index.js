@@ -32,6 +32,7 @@ app.use('/admin',adminRouter)
 app.use('/movie',movieRouter)
 app.use('/booking',bookingRouter)
 app.use('/ticket',ticketRouter)
+
 app.use(express.static(path.join(__dirname,'/front/build')));
 
 app.get('*',(req,res)=>{
