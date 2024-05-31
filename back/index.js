@@ -51,8 +51,8 @@ res.send("hiii")
 
 try {
     mongoose.connect(process.env.MONGO_URL).then(()=>{
-        app.listen(5000,()=>{
-            console.log(" db running 5000")
+        app.listen(3000,()=>{
+            console.log(" db running 3000")
         })
     }).catch((error)=>{
         console.log(error)
